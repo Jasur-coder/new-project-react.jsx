@@ -1,13 +1,21 @@
 import React, { useContext, useReducer } from "react";
 import { ThemeContext } from "../../context/useTheme";
 import { DECREMENT, INCREMENT, RESET } from "../../store/type";
-import globalReducer from "../../store/SLICE.JS";
+import globalReduce from "../../store/SLICE.JS";
 
 const Home = () => {
     const { theme, changeThemeHandler } = useContext(ThemeContext);
     console.log(theme);
 
-    const[state, dispatch] = useReducer(globalReducer, {count: 0})
+    const[state, dispatch] = useReducer(globalReduce, {count: 0})
+
+    function increment() {
+        dispatch({type: INCREMENT, payload: "This is increment payloud"});
+    }
+
+    function decrement() { 
+        dispatch({type: DECREMENT, payload: "This is DECREMENT payloud"});
+    }
 
     return (
         <>
@@ -16,9 +24,9 @@ const Home = () => {
 
 
             <div>
-                <button onClick={() => dispatch({type: INCREMENT})}>+</button>
+                <button onClick={increment}>+</button>
                 <span>{state.count}</span>
-                <button onClick={() => dispatch({type: DECREMENT})}>-</button>
+                <button onClick={decrement}>-</button>
                 <button onClick={() => dispatch({type: RESET})}>reset</button>
             </div>
         </>

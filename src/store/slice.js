@@ -1,6 +1,6 @@
 import { DECREMENT, INCREMENT, RESET } from "./type";
 
-function globalReducer(state, action) {
+function globalReduce(state, action) {
         switch (action.type) {
                 case INCREMENT:
                         return {
@@ -19,4 +19,4 @@ function globalReducer(state, action) {
         }
 }
 
-export default globalReducer
+export default globalReduce
